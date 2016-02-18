@@ -21,7 +21,7 @@ public class DeployWorkflowProcessor implements RequestProcessor{
 		// Create Activiti process engine
 		String deploymentId = repositoryService
 				  .createDeployment()
-				  .addClasspathResource("AnnualLeave.bpmn20.xml")
+				  .addClasspathResource("activiti\\AnnualLeave.bpmn20.xml.bpmn")
 				  .deploy()
 				  .getId();
 		System.out.println(deploymentId);

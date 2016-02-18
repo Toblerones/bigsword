@@ -1,0 +1,12 @@
+{
+	'logon':{
+		'requestObjectClass':'com.bigsword.eleave.web.json.request.JsonLogonRequest',
+		'requestProcessorClass':'com.bigsword.eleave.web.processors.authentication.LogonProcessor',
+		'responseObjectClass':'com.bigsword.eleave.web.json.request.ResponseBase'
+	},
+	'deployWorkflow':{
+		'requestObjectClass':'com.bigsword.eleave.web.json.request.JsonDeployWorkflowRequest',
+		'requestProcessorClass':'com.bigsword.eleave.web.processors.workflow.DeployWorkflowProcessor',
+		'responseObjectClass':'com.bigsword.eleave.web.json.request.ResponseBase'
+	}
+}

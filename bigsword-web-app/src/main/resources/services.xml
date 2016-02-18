@@ -10,5 +10,4 @@
 	<import resource="eleaveapp/processor-objects.xml"/>
 	<import resource="eleaveapp/request-objects.xml"/>
 	
-	
 </beans>
