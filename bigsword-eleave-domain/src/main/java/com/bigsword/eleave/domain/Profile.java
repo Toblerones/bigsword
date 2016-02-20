@@ -2,7 +2,7 @@ package com.bigsword.eleave.domain;
 
 import java.util.Map;
 
-public class LeaveProfile {
+public class Profile {
 	private String staffId;
 	private String yearOfOperation;
 	

@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class LeaveRequest {
 	
-	private String requestedBy;
-	private String requestedById;
+	private String requestorId;
 	
 	private Date fromDate;
 	private Date ToDate;
