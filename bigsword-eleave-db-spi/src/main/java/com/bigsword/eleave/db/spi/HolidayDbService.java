@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.bigsword.eleave.domain.Holiday;
 
-public interface HolidayDbServices {
+public interface HolidayDbService {
 	public List<Holiday> getHolidayList(int year);
 	public List<Holiday> getHolidayList(Date fromDate, Date toDate);
 	public Holiday getHoliday(Date date);

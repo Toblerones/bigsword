@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.bigsword.eleave.domain.LeaveRequest;
 
-public interface LeaveRequestDbServices {
+public interface LeaveRequestDbService {
 	public List<LeaveRequest> getLeaveRequest(String userId);
 	public List<LeaveRequest> getLeaveRequest(String userId, String leaveType);
 	public List<LeaveRequest> getLeaveRequest(String userId, Date beginDate, Date endDate);
