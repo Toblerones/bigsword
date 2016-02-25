@@ -10,4 +10,7 @@
 	<bean id="deployProcessor" class="com.bigsword.eleave.web.processors.workflow.DeployWorkflowProcessor">
 		 <property name="repositoryService" ref="repositoryService" />
 	</bean>
+	
+	<bean id="leaveListProcessor" class="com.bigsword.eleave.web.processors.leave.LeaveListProcessor"/>
+	
 </beans>

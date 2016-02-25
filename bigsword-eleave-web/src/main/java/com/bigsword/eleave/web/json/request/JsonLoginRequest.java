@@ -2,14 +2,15 @@ package com.bigsword.eleave.web.json.request;
 
 import com.bigsword.eleave.web.json.base.RequestBase;
 
-public class JsonLogonRequest extends RequestBase{
-	private String username;
+public class JsonLoginRequest extends RequestBase{
+	private String staffId;
 	private String password;
-	public String getUsername() {
-		return username;
+
+	public String getStaffId() {
+		return staffId;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	public String getPassword() {
 		return password;
