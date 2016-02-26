@@ -2,6 +2,16 @@
     <wb-module deploy-name="bigsword-web-app">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="bigsword-eleave-web-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-web/bigsword-eleave-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="web-app-base-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-app-base/web-app-base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="app-base-gson-utils-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/app-base-gson-utils/app-base-gson-utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/bigsword-web-app/target/classes"/>
         <property name="context-root" value="bigsword"/>
     </wb-module>
