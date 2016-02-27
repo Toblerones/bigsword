@@ -9,6 +9,8 @@ import com.bigsword.eleave.domain.User;
 
 public interface UserBpmService {
 	
+	public User logon(String username, String password, String channelCode);
+	
 	public LeaveProfile retrieveLeaveProfile(String staffId, Date year);
 	
 	public List<LeaveRequest> retrieveLeaveFromMe(String staffId, Date year);
