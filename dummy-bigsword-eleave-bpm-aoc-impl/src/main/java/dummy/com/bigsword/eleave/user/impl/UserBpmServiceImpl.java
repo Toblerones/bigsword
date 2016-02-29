@@ -3,6 +3,7 @@ package dummy.com.bigsword.eleave.user.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.bigsword.eleave.domain.Authentication;
 import com.bigsword.eleave.domain.LeaveProfile;
 import com.bigsword.eleave.domain.LeaveRequest;
 import com.bigsword.eleave.domain.User;
@@ -10,10 +11,10 @@ import com.bigsword.eleave.user.spi.UserBpmService;
 
 public class UserBpmServiceImpl implements UserBpmService{
 
-	public User logon(String username, String password, String channelCode) {
+	public User login(Authentication authentication) {
 		User user = new User();
-		user.setFirstName("dummyFirstName");
-		user.setLastName("dummyLastName");
+		user.setFirstName(authentication.getUserName());
+		user.setLastName(authentication.getPassword());
 		user.setStaffId("99998888");
 		user.setEmail("dummy@dummy.com");
 		return user;

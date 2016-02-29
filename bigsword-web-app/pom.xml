@@ -68,15 +68,21 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.35</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>bigsword</groupId>
 			<artifactId>bigsword-eleave-web</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 		
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.35</version>
+			<groupId>bigsword</groupId>
+			<artifactId>dummy-bigsword-eleave-bpm-aoc-impl</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
    

@@ -3,6 +3,18 @@
 	<name>bigsword-web-app</name>
 	<comment></comment>
 	<projects>
+		<project>dummy-bigsword-eleave-db-impl</project>
+		<project>app-base-gson-utils</project>
+		<project>bigsword-eleave-bpm-spi</project>
+		<project>bigsword-eleave-web</project>
+		<project>bigsword-eleave-bpm-aoc-impl</project>
+		<project>bigsword-eleave-bpm-objects</project>
+		<project>web-app-base</project>
+		<project>bigsword-eleave-db-spi</project>
+		<project>dummy-bigsword-eleave-bpm-aoc-impl</project>
+		<project>bigsword-eleave-db-impl</project>
+		<project>bigsword-eleave-db-objects</project>
+		<project>bigsword-eleave-domain</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

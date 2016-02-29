@@ -1,4 +1,4 @@
-package com.bigsword.eleave.web.json.base;
+package com.bigsword.eleave.web.json.object;
 
 import com.github.toblerones.annotation.WebAppRequestAnnotation;
 

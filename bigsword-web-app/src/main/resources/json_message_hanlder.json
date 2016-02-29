@@ -1,6 +1,6 @@
 {
-	'logon':{
-		'requestObjectClass':'com.bigsword.eleave.web.json.request.JsonLogonRequest',
+	'login':{
+		'requestObjectClass':'com.bigsword.eleave.web.json.request.JsonLoginRequest',
 		'responseObjectClass':'com.bigsword.eleave.web.json.request.ResponseBase'
 	},
 	'deployWorkflow':{
@@ -8,7 +8,7 @@
 		'responseObjectClass':'com.bigsword.eleave.web.json.request.ResponseBase'
 	},
 	'leaveList':{
-		'requestObjectClass':'com.bigsword.eleave.web.json.base.RequestBase',
+		'requestObjectClass':'com.bigsword.eleave.web.json.object.RequestBase',
 		'responseObjectClass':'com.bigsword.eleave.web.json.response.JsonLeaveListResponse'
 	}
 }

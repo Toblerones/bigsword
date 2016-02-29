@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="bigsword-web-app">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <dependent-module archiveName="bigsword-eleave-web-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-web/bigsword-eleave-web">
+        <dependent-module archiveName="dummy-bigsword-eleave-db-impl.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dummy-bigsword-eleave-db-impl/dummy-bigsword-eleave-db-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="web-app-base-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-app-base/web-app-base">
+        <dependent-module archiveName="app-base-gson-utils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/app-base-gson-utils/app-base-gson-utils">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="app-base-gson-utils-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/app-base-gson-utils/app-base-gson-utils">
+        <dependent-module archiveName="bigsword-eleave-bpm-spi.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-spi/bigsword-eleave-bpm-spi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-web.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-web/bigsword-eleave-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-bpm-aoc-impl.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-aoc-impl/bigsword-eleave-bpm-aoc-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-bpm-objects.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-objects/bigsword-eleave-bpm-objects">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="web-app-base.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-app-base/web-app-base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-spi.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-spi/bigsword-eleave-db-spi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dummy-bigsword-eleave-bpm-aoc-impl.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dummy-bigsword-eleave-bpm-aoc-impl/dummy-bigsword-eleave-bpm-aoc-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-impl.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-impl/bigsword-eleave-db-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-objects.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-objects/bigsword-eleave-db-objects">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-domain.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-domain/bigsword-eleave-domain">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/bigsword-web-app/target/classes"/>
-        <property name="context-root" value="bigsword-web-app"/>
+        <property name="context-root" value="bigsword"/>
     </wb-module>
 </project-modules>

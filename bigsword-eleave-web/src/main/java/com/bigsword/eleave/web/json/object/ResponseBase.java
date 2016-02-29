@@ -1,4 +1,4 @@
-package com.bigsword.eleave.web.json.base;
+package com.bigsword.eleave.web.json.object;
 
 public class ResponseBase {
 	private String status;
