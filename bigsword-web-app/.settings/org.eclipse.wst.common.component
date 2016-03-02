@@ -15,6 +15,12 @@
         <dependent-module archiveName="bigsword-eleave-domain-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-domain/bigsword-eleave-domain">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="bigsword-domain-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-domain/bigsword-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="app-base-workflow-domain-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/app-base-workflow-domain/app-base-workflow-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="bigsword-eleave-bpm-spi-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-spi/bigsword-eleave-bpm-spi">
             <dependency-type>uses</dependency-type>
         </dependent-module>
