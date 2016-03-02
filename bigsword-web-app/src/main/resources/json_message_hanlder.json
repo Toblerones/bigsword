@@ -10,5 +10,9 @@
 	'leaveList':{
 		'requestObjectClass':'com.bigsword.eleave.web.json.object.RequestBase',
 		'responseObjectClass':'com.bigsword.eleave.web.json.response.JsonLeaveListResponse'
+	},
+	'refresh':{
+		'requestObjectClass':'com.bigsword.eleave.web.json.object.RequestBase',
+		'responseObjectClass':'com.bigsword.eleave.web.json.response.JsonRefreshResponse'
 	}
 }
