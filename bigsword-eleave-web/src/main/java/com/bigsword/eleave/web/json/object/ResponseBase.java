@@ -1,27 +1,44 @@
 package com.bigsword.eleave.web.json.object;
 
+import java.util.List;
+
 public class ResponseBase {
-	private String status;
+	private String responseStatus;
 	private String errorCode;
-	private String errorDescription;
+	private String errorMessage;
 	
-	public String getStatus() {
-		return status;
+	private List<ValidationError> validationErrors;
+
+	public String getResponseStatus() {
+		return responseStatus;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+
+	public void setResponseStatus(String responseStatus) {
+		this.responseStatus = responseStatus;
 	}
+
 	public String getErrorCode() {
 		return errorCode;
 	}
+
 	public void setErrorCode(String errorCode) {
 		this.errorCode = errorCode;
 	}
-	public String getErrorDescription() {
-		return errorDescription;
+
+	public String getErrorMessage() {
+		return errorMessage;
 	}
-	public void setErrorDescription(String errorDescription) {
-		this.errorDescription = errorDescription;
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public List<ValidationError> getValidationErrors() {
+		return validationErrors;
+	}
+
+	public void setValidationErrors(List<ValidationError> validationErrors) {
+		this.validationErrors = validationErrors;
 	}
 	
 	
