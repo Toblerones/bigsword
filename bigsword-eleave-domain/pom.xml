@@ -5,4 +5,14 @@
   <version>0.0.1</version>
   <name>Domain object of eleave</name>
   <description>Rich domain model</description>
+  
+  <dependencies>
+  	<dependency>
+			<groupId>toblerones</groupId>
+  			<artifactId>app-base-test-utils</artifactId>
+  			<version>0.0.1</version>
+  			<scope>test</scope>
+		</dependency>
+		
+	 </dependencies>
 </project>

@@ -2,7 +2,7 @@ package com.bigsword.eleave.domain;
 
 import java.util.Date;
 
-import com.bigsword.eleave.domain.constraints.LeaveTypeKey;
+import com.bigsword.eleave.domain.constraints.LeaveType;
 
 public class LeaveRequest {
 	
@@ -19,7 +19,7 @@ public class LeaveRequest {
 	
 	// Rich Domain
 	public boolean isAnnualLeave(){
-		return LeaveTypeKey.ANNUAL_LEAVE.equals(getLeaveType());
+		return LeaveType.ANNUAL_LEAVE.equals(getLeaveType());
 	}
 
 	public String getRequestId() {

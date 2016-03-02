@@ -1,6 +1,6 @@
 package com.bigsword.eleave.domain.constraints;
 
-public class LeaveTypeKey {
+public class LeaveType {
 	
 	public static final String ANNUAL_LEAVE = "ANL"; 
 	public static final String SICK_LEAVE = "SIL"; 

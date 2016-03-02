@@ -9,8 +9,8 @@ import org.activiti.engine.task.Task;
 
 import com.bigsword.eleave.db.spi.LeaveRequestDbService;
 import com.bigsword.eleave.domain.LeaveRequest;
+import com.bigsword.eleave.domain.constraints.LeaveStatus;
 import com.bigsword.eleave.leave.spi.LeaveBpmService;
-import com.bigsword.eleave.leave.util.LeaveStatusKey;
 
 public class LeaveBpmServiceImpl implements LeaveBpmService {
 	private RuntimeService runtimeService;
@@ -20,7 +20,7 @@ public class LeaveBpmServiceImpl implements LeaveBpmService {
 	
 	@Override
 	public Boolean draftLeave(LeaveRequest leaveRequest) {
-		leaveRequest.setStatus(LeaveStatusKey.draftStatus);
+		leaveRequest.setStatus(LeaveStatus.DRAFT);
 		LeaveRequestDbService.addLeaveRequest(leaveRequest);
 		return true;
 	}
@@ -31,7 +31,7 @@ public class LeaveBpmServiceImpl implements LeaveBpmService {
 		boolean result=false;
 		if(leave!=null){
 			leaveRequest.setRequestId(leave.getId());
-			leaveRequest.setStatus(LeaveStatusKey.submitStatus);
+			leaveRequest.setStatus(LeaveStatus.SUBMIT);
 			LeaveRequestDbService.updateLeaveRequest(leaveRequest);
 			taskService.complete(leave.getId());
 			result=true;
@@ -50,7 +50,7 @@ public class LeaveBpmServiceImpl implements LeaveBpmService {
 			calcelMap.put("cancelLeave", true);
 	        taskService.complete(leave.getId(),calcelMap);
 	        
-			leaveRequest.setStatus(LeaveStatusKey.cancelStatus);
+			leaveRequest.setStatus(LeaveStatus.CANCEL);
 			LeaveRequestDbService.updateLeaveRequest(leaveRequest);
 			result=true;
 		}
@@ -65,7 +65,7 @@ public class LeaveBpmServiceImpl implements LeaveBpmService {
 			HashMap<String, Object> approveMap = new HashMap<String, Object>();
 			approveMap.put("vacationApproved", true);
 	        taskService.complete(leave.getId(),approveMap);
-	        leaveRequest.setStatus(LeaveStatusKey.approveStatus);
+	        leaveRequest.setStatus(LeaveStatus.APPROVE);
 	        LeaveRequestDbService.updateLeaveRequest(leaveRequest);
 	        result=true;
 		}
@@ -80,7 +80,7 @@ public class LeaveBpmServiceImpl implements LeaveBpmService {
 			HashMap<String, Object> rejectMap = new HashMap<String, Object>();
 			rejectMap.put("vacationApproved", false);
 	        taskService.complete(leave.getId(),rejectMap);
-	        leaveRequest.setStatus(LeaveStatusKey.rejectStatus);
+	        leaveRequest.setStatus(LeaveStatus.REJECT);
 	        LeaveRequestDbService.updateLeaveRequest(leaveRequest);
 	        result=true;
 		}
