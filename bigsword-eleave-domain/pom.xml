@@ -8,8 +8,8 @@
   
   <dependencies>
   	<dependency>
-		<groupId>toblerones</groupId>
- 			<artifactId>app-base-workflow-domain</artifactId>
+		<groupId>bigsword</groupId>
+ 			<artifactId>bigsword-domain</artifactId>
  			<version>0.0.1</version>
 	</dependency>
 	
