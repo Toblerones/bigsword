@@ -3,10 +3,10 @@ package com.bigsword.eleave.domain;
 import java.util.Date;
 
 import com.bigsword.eleave.domain.constraints.LeaveType;
+import com.github.toblerones.base.workflow.domain.Request;
 
-public class LeaveRequest {
+public class LeaveRequest extends Request{
 	
-	private String requestId;
 	private String requestorId;
 	
 	private Date fromDate;
@@ -20,14 +20,6 @@ public class LeaveRequest {
 	// Rich Domain
 	public boolean isAnnualLeave(){
 		return LeaveType.ANNUAL_LEAVE.equals(getLeaveType());
-	}
-
-	public String getRequestId() {
-		return requestId;
-	}
-
-	public void setRequestId(String requestId) {
-		this.requestId = requestId;
 	}
 
 	public String getRequestorId() {

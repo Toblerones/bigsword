@@ -8,11 +8,17 @@
   
   <dependencies>
   	<dependency>
-			<groupId>toblerones</groupId>
-  			<artifactId>app-base-test-utils</artifactId>
-  			<version>0.0.1</version>
-  			<scope>test</scope>
-		</dependency>
+		<groupId>toblerones</groupId>
+ 			<artifactId>app-base-workflow-domain</artifactId>
+ 			<version>0.0.1</version>
+	</dependency>
+	
+  	<dependency>
+		<groupId>toblerones</groupId>
+ 			<artifactId>app-base-test-utils</artifactId>
+ 			<version>0.0.1</version>
+ 			<scope>test</scope>
+	</dependency>
 		
-	 </dependencies>
+  </dependencies>
 </project>
