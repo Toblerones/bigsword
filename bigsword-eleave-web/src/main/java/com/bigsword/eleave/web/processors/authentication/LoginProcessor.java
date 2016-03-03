@@ -7,6 +7,7 @@ import com.bigsword.eleave.domain.User;
 import com.bigsword.eleave.domain.constraints.ChannelCode;
 import com.bigsword.eleave.user.spi.UserBpmService;
 import com.bigsword.eleave.web.json.request.JsonLoginRequest;
+import com.bigsword.eleave.web.json.response.JsonLoginResponse;
 import com.github.toblerones.web.app.base.processor.RequestProcessor;
 import com.github.toblerones.web.app.context.WorkContext;
 
@@ -25,11 +26,11 @@ public class LoginProcessor implements RequestProcessor{
 		
 		if(logger.isDebugEnabled()){
 		    logger.debug("json cmd" + json.getCmd());
-		    logger.debug("json StaffId" + json.getStaffId());
+		    logger.debug("json StaffId" + json.getUsername());
 		    logger.debug("json Password" + json.getPassword());
 		}
 		
-		String username = json.getStaffId();
+		String username = json.getUsername();
 		String password = json.getPassword();
 		
 		Authentication authentication = new Authentication(username, password, ChannelCode.NET_NON_SSO);
@@ -37,7 +38,14 @@ public class LoginProcessor implements RequestProcessor{
 		User user = userBpmService.login(authentication);
 		
 		if(user!=null){
+			JsonLoginResponse response = new JsonLoginResponse();
+			response.setResponseStatus("success");
+			workContext.putJsonResponseObjectToContext(response);
 			return "DONE";
+		}else{
+			JsonLoginResponse response = new JsonLoginResponse();
+			response.setResponseStatus("failure");
+			workContext.putJsonResponseObjectToContext(response);
 		}
 		
 		return "DONE";

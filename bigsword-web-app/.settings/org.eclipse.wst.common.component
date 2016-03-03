@@ -27,7 +27,22 @@
         <dependent-module archiveName="bigsword-eleave-bpm-objects-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-objects/bigsword-eleave-bpm-objects">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-bpm-aoc-impl-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-bpm-aoc-impl/bigsword-eleave-bpm-aoc-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-spi-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-spi/bigsword-eleave-db-spi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-objects-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-objects/bigsword-eleave-db-objects">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bigsword-eleave-db-impl-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bigsword-eleave-db-impl/bigsword-eleave-db-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="dummy-bigsword-eleave-bpm-aoc-impl-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dummy-bigsword-eleave-bpm-aoc-impl/dummy-bigsword-eleave-bpm-aoc-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dummy-bigsword-eleave-db-impl-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dummy-bigsword-eleave-db-impl/dummy-bigsword-eleave-db-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/bigsword-web-app/target/classes"/>
