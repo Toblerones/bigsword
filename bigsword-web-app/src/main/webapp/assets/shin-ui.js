@@ -35,12 +35,13 @@ define('shin-ui/controllers/application', ['exports', 'ember'], function (export
 		isTravel: null,
 		ajaxGeneric: _ember['default'].inject.service('ajax-generic'),
 		modalShow: _ember['default'].inject.service('modal-show'),
+		loginController: _ember['default'].inject.controller('login'),
 
 		isLogin: (function () {
 
 			if (this.get('currentPath').toString().indexOf("login") > -1 || this.get('currentPath').toString().indexOf("quickApprove") > -1) {
 				return true;
-			} else if (this.get('ajaxGeneric').cookieCheck()) {
+			} else {
 				var data = {
 					cmd: 'refresh'
 				};
@@ -48,31 +49,28 @@ define('shin-ui/controllers/application', ['exports', 'ember'], function (export
 				this.get('ajaxGeneric').post(data, this).then(function (response) {
 					_this.set('currentUserName', response.staffName);
 
+					if (_this.get('currentSys')) {
+						$('body').removeClass(_this.get('currentSys'));
+					}
 					_this.set('currentSys', response.system);
-					var currentSys = _this.get('currentSys');
+					$('body').addClass(_this.get('currentSys'));
 
+					var currentSys = _this.get('currentSys');
 					if (currentSys === "leave") {
-						var imageUrl = "../img/bk-2.jpg";
 						_this.set('isLeave', true);
 						_this.set('isTravel', false);
 					}
 					if (currentSys === "travel") {
-						var imageUrl = "../img/bk.jpg";
 						_this.set('isTravel', true);
 						_this.set('isLeave', false);
 					}
-					_ember['default'].$('body').css('background-image', 'url(' + imageUrl + ')');
 				});
-				return false;
-			} else {
-				this.get('modalShow').show(this, "Session unvalid!", "error", "Please log in.", true, "#alertModal", "/login");
 				return false;
 			}
 		}).property('currentPath'),
 
 		actions: {
 			jumpToLogin: function jumpToLogin() {
-				// document.cookie = document.cookie + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
 				var data = {
 					cmd: 'logout'
 				};
@@ -1820,13 +1818,14 @@ define("shin-ui/pods/components/nav-footer/template", ["exports"], function (exp
 define('shin-ui/pods/dashboard/leave/controller', ['exports', 'ember'], function (exports, _ember) {
 	exports['default'] = _ember['default'].Controller.extend({
 		dashboardData: _ember['default'].inject.service('dashboard-data'),
-		tbHead: ["type", "draft", "pending", "approved", "rejected", "cancelled", "total"],
+		tbHead: [" ", "Draft", "Pending", "Approved", "Rejected", "Cancelled", "Total"],
 		rowHead: ["Annual", "Sick", "Total"],
 		listController: _ember['default'].inject.controller('leave.list'),
 
 		actions: {
 			listLeaves: function listLeaves(position) {
 				console.log(position);
+				position.row = this.get('dashboardData').firstCaseChg(position.row, 0);
 				this.transitionToRoute('/leave/list/' + position.category + '/' + position.row + '/' + position.col);
 			}
 
@@ -1834,29 +1833,40 @@ define('shin-ui/pods/dashboard/leave/controller', ['exports', 'ember'], function
 	});
 });
 define('shin-ui/pods/dashboard/leave/route', ['exports', 'ember'], function (exports, _ember) {
-	exports['default'] = _ember['default'].Route.extend({
-		ajaxGeneric: _ember['default'].inject.service('ajax-generic'),
-		model: function model() {
-			var data = {
-				cmd: 'leaveDashboard'
-			};
+			exports['default'] = _ember['default'].Route.extend({
+						ajaxGeneric: _ember['default'].inject.service('ajax-generic'),
+						model: function model() {
+									var data = {
+												cmd: 'leaveDashboard'
+									};
 
-			var appController = this.controllerFor('application');
-			var controller = this.controllerFor('dashboard.leave');
-			this.get('ajaxGeneric').post(data, appController).then(function (response) {
-				// console.log(response);
-				var rowHead = controller.get('rowHead');
-				var tbHead = controller.get('tbHead');
+									var appController = this.controllerFor('application');
+									var controller = this.controllerFor('dashboard.leave');
+									this.get('ajaxGeneric').post(data, appController).then(function (response) {
+												var createdByMe = response.createdByMe;
+												var pendOnMe = response.pendOnMe;
 
-				var createdByMe = controller.get('dashboardData').convert(response.createdByMe, tbHead, rowHead, "header", "clkCell");
-				var pendOnMe = controller.get('dashboardData').convert(response.pendOnMe, tbHead, rowHead, "header", "clkCell");
+												var rowHead = controller.get('rowHead');
+												var tbHead = controller.get('tbHead');
+												tbHead[0] = "type";
+												for (var i = 1; i < tbHead.length; i++) {
+															tbHead[i] = controller.get('dashboardData').firstCaseChg(tbHead[i], 0);
+												}
 
-				var model = { createdByMe: createdByMe, pendOnMe: pendOnMe };
+												var keyArr = ["draft", "pending", "approved", "rejected", "cancelled"];
 
-				controller.set('model', model);
+												createdByMe = controller.get('dashboardData').calcTotal(createdByMe, keyArr);
+												pendOnMe = controller.get('dashboardData').calcTotal(pendOnMe, keyArr);
+
+												createdByMe = controller.get('dashboardData').convert(createdByMe, tbHead, rowHead, "header", "clkCell");
+												pendOnMe = controller.get('dashboardData').convert(pendOnMe, tbHead, rowHead, "header", "clkCell");
+
+												var model = { createdByMe: createdByMe, pendOnMe: pendOnMe };
+
+												controller.set('model', model);
+									});
+						}
 			});
-		}
-	});
 });
 define("shin-ui/pods/dashboard/leave/template", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -4577,26 +4587,21 @@ define('shin-ui/pods/login/controller', ['exports', 'ember'], function (exports,
 	exports['default'] = _ember['default'].Controller.extend({
 		ajaxGeneric: _ember['default'].inject.service('ajax-generic'),
 		modalShow: _ember['default'].inject.service('modal-show'),
+		appController: _ember['default'].inject.controller('application'),
 		username: "",
 		password: "",
 		errorMessage: "",
 		loginSystem: "leave",
 		init: function init() {
-			var imageUrl = "../img/bk-2.jpg";
-			_ember['default'].$('body').css('background-image', 'url(' + imageUrl + ')');
+			$('body').addClass(this.get('loginSystem'));
 		},
 
 		actions: {
 			switchSystem: function switchSystem() {
 				var loginSystem = _ember['default'].$("#loginSystem").val();
+				$('body').removeClass(this.get('loginSystem'));
 				this.set('loginSystem', loginSystem);
-
-				if (loginSystem === "leave") {
-					var imageUrl = "../img/bk-2.jpg";
-				} else {
-					var imageUrl = "../img/bk.jpg";
-				}
-				_ember['default'].$('body').css('background-image', 'url(' + imageUrl + ')');
+				$('body').addClass(this.get('loginSystem'));
 			},
 			validate: function validate() {
 				var controller = this.controllerFor('login');
@@ -5074,7 +5079,7 @@ define('shin-ui/services/ajax-generic', ['exports', 'ember', 'shin-ui/config/env
 	exports['default'] = _ember['default'].Service.extend({
 		modalShow: _ember['default'].inject.service('modal-show'),
 		cookieCheck: function cookieCheck() {
-			if (document.cookie.toString().indexOf("sessionId") > -1) {
+			if (document.cookie.toString().indexOf("JSESSIONID") > -1) {
 				return true;
 			} else {
 				return false;
@@ -5113,8 +5118,39 @@ define('shin-ui/services/ajax-generic', ['exports', 'ember', 'shin-ui/config/env
 
 	});
 });
-define('shin-ui/services/dashboard-data', ['exports', 'ember'], function (exports, _ember) {
-	exports['default'] = _ember['default'].Service.extend({
+define("shin-ui/services/dashboard-data", ["exports", "ember"], function (exports, _ember) {
+	exports["default"] = _ember["default"].Service.extend({
+
+		calcTotal: function calcTotal(inArr, keyArr) {
+			var typeTotal = { type: "total" };
+			for (var h = 0; h < keyArr.length; h++) {
+				var _k = keyArr[h];
+				typeTotal[_k] = 0;
+			}
+
+			for (var i = 0; i < inArr.length; i++) {
+				var t = 0;
+				for (var key in inArr[i]) {
+					if (typeof inArr[i][key] === "number") {
+						typeTotal[key] = typeTotal[key] + inArr[i][key];
+						t = t + inArr[i][key];
+					}
+				}
+				inArr[i]["total"] = t;
+			}
+
+			var tt = 0;
+			for (var key in typeTotal) {
+				if (typeof typeTotal[key] === "number") {
+					tt = tt + typeTotal[key];
+				}
+			}
+			typeTotal.total = tt;
+			inArr.push(typeTotal);
+
+			return inArr;
+		},
+
 		convert: function convert(table, colOrder, rowOrder, headClass, dtClass) {
 			var t = [];
 			for (var i = 0; i < table.length; i++) {
@@ -5124,16 +5160,18 @@ define('shin-ui/services/dashboard-data', ['exports', 'ember'], function (export
 				for (var j = 0; j < objLength; j++) {
 					r[j] = table[i][colOrder[j]];
 				}
-				r = this.get('expand')(r, colOrder, rowOrder[i], headClass, dtClass);
+				var firstCaseChg = this.get('firstCaseChg');
+				r = this.get('expand')(r, colOrder, rowOrder[i], headClass, dtClass, firstCaseChg);
 				t.push(r);
 			}
 			return t;
 		},
 
-		expand: function expand(r, colOrder, row, headClass, dtClass) {
+		expand: function expand(r, colOrder, row, headClass, dtClass, firstCaseChg) {
 			for (var m = 0; m < r.length; m++) {
 
 				if (m === 0) {
+					r[m] = firstCaseChg(r[m], 1);
 					r[m] = { cls: headClass, dt: r[m] };
 				} else {
 					r[m] = { cls: dtClass, dt: r[m], position: { row: row, col: colOrder[m] } };
@@ -5148,6 +5186,22 @@ define('shin-ui/services/dashboard-data', ['exports', 'ember'], function (export
 				i++;
 			}
 			return i;
+		},
+
+		firstCaseChg: function firstCaseChg(str, type) {
+			var o = [];
+			for (var i = 0; i < str.length; i++) {
+				if (i === 0) {
+					if (type === 1) {
+						o[i] = str[0].toUpperCase();
+					} else {
+						o[i] = str[0].toLowerCase();
+					}
+				} else {
+					o[i] = str[i];
+				}
+			}
+			return o.toString().replace(/,/g, "");
 		}
 	});
 });
@@ -5312,7 +5366,7 @@ define("shin-ui/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 13,
+            "line": 15,
             "column": 0
           }
         },
@@ -5335,7 +5389,7 @@ define("shin-ui/templates/application", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n\n\n");
         dom.appendChild(el0, el1);
         return el0;
       },
@@ -5378,7 +5432,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("shin-ui/app")["default"].create({"ajax":"http://localhost:8080/bigsword/msgchannel","name":"shin-ui","version":"0.0.0+67111cd5"});
+  require("shin-ui/app")["default"].create({"ajax":"http://localhost:8080/bigsword/msgchannel","name":"shin-ui","version":"0.0.0+7a6c95d7"});
 }
 
 /* jshint ignore:end */

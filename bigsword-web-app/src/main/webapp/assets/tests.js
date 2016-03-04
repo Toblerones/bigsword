@@ -13,7 +13,7 @@ define('shin-ui/tests/controllers/application.jshint', ['exports'], function (ex
   QUnit.module('JSHint - controllers/application.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'controllers/application.js should pass jshint.\ncontrollers/application.js: line 31, col 25, \'imageUrl\' is already defined.\ncontrollers/application.js: line 35, col 66, \'imageUrl\' used out of scope.\ncontrollers/application.js: line 52, col 67, \'response\' is defined but never used.\ncontrollers/application.js: line 64, col 14, Missing semicolon.\ncontrollers/application.js: line 65, col 68, \'response\' is defined but never used.\ncontrollers/application.js: line 74, col 15, Missing semicolon.\ncontrollers/application.js: line 60, col 17, \'systemName\' is defined but never used.\n\n7 errors');
+    assert.ok(false, 'controllers/application.js should pass jshint.\ncontrollers/application.js: line 49, col 67, \'response\' is defined but never used.\ncontrollers/application.js: line 61, col 14, Missing semicolon.\ncontrollers/application.js: line 62, col 68, \'response\' is defined but never used.\ncontrollers/application.js: line 71, col 15, Missing semicolon.\ncontrollers/application.js: line 57, col 17, \'systemName\' is defined but never used.\ncontrollers/application.js: line 24, col 21, \'$\' is not defined.\ncontrollers/application.js: line 27, col 17, \'$\' is not defined.\n\n7 errors');
   });
 });
 define('shin-ui/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
@@ -261,7 +261,7 @@ define('shin-ui/tests/pods/login/controller.jshint', ['exports'], function (expo
   QUnit.module('JSHint - pods/login/controller.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'pods/login/controller.js should pass jshint.\npods/login/controller.js: line 25, col 21, \'imageUrl\' is already defined.\npods/login/controller.js: line 27, col 62, \'imageUrl\' used out of scope.\npods/login/controller.js: line 47, col 30, \'response\' is defined but never used.\n\n3 errors');
+    assert.ok(false, 'pods/login/controller.js should pass jshint.\npods/login/controller.js: line 40, col 30, \'response\' is defined but never used.\npods/login/controller.js: line 12, col 9, \'$\' is not defined.\npods/login/controller.js: line 19, col 13, \'$\' is not defined.\npods/login/controller.js: line 21, col 13, \'$\' is not defined.\n\n4 errors');
   });
 });
 define('shin-ui/tests/pods/login/route.jshint', ['exports'], function (exports) {
@@ -351,7 +351,7 @@ define('shin-ui/tests/services/dashboard-data.jshint', ['exports'], function (ex
   QUnit.module('JSHint - services/dashboard-data.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'services/dashboard-data.js should pass jshint.\nservices/dashboard-data.js: line 34, col 17, \'p\' is defined but never used.\n\n1 error');
+    assert.ok(false, 'services/dashboard-data.js should pass jshint.\nservices/dashboard-data.js: line 13, col 22, Missing semicolon.\nservices/dashboard-data.js: line 24, col 17, \'key\' is already defined.\nservices/dashboard-data.js: line 68, col 17, \'p\' is defined but never used.\n\n3 errors');
   });
 });
 define('shin-ui/tests/services/modal-show.jshint', ['exports'], function (exports) {
