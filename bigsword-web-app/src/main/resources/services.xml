@@ -13,10 +13,12 @@
 	
 	<!-- db -->
 	<import resource="dummy/dummy-db-services.xml"/>
-	
+
+	<!--
 	<import resource="activiti/activiti-configuration.xml"/>
 
 	<import resource="eleaveapp/processor-objects.xml"/>
+	-->
 	<import resource="eleaveapp/request-objects.xml"/>
 	
 	

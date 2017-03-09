@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bigsword-domain" />
+        <module name="bigsword-eleave-bpm-aoc-impl" />
+        <module name="bigsword-eleave-bpm-objects" />
+        <module name="bigsword-eleave-bpm-spi" />
+        <module name="bigsword-eleave-db-impl" />
+        <module name="bigsword-eleave-db-objects" />
+        <module name="bigsword-eleave-db-spi" />
+        <module name="bigsword-eleave-domain" />
+        <module name="bigsword-eleave-web" />
+        <module name="bigsword-web-app" />
+        <module name="bigswordbuild" />
+        <module name="dummy-bigsword-eleave-bpm-aoc-impl" />
+        <module name="dummy-bigsword-eleave-db-impl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bigsword-build" target="1.5" />
+      <module name="bigsword-domain" target="1.5" />
+      <module name="bigsword-eleave-bpm-aoc-impl" target="1.5" />
+      <module name="bigsword-eleave-bpm-objects" target="1.5" />
+      <module name="bigsword-eleave-bpm-spi" target="1.5" />
+      <module name="bigsword-eleave-db-impl" target="1.5" />
+      <module name="bigsword-eleave-db-objects" target="1.5" />
+      <module name="bigsword-eleave-db-spi" target="1.5" />
+      <module name="bigsword-eleave-domain" target="1.5" />
+      <module name="bigsword-eleave-web" target="1.5" />
+      <module name="bigsword-web-app" target="1.7" />
+      <module name="bigswordbuild" target="1.5" />
+      <module name="dummy-bigsword-eleave-bpm-aoc-impl" target="1.5" />
+      <module name="dummy-bigsword-eleave-db-impl" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

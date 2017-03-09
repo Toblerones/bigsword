@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>toblerones</groupId>
+    <artifactId>bigsword-build</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>../bigsword-web-app</module>
+        <module>../bigsword-domain</module>
+        <module>../bigsword-eleave-bpm-impl</module>
+        <module>../bigsword-eleave-bpm-objects</module>
+        <module>../bigsword-eleave-bpm-spi</module>
+        <module>../bigsword-eleave-db-impl</module>
+        <module>../bigsword-eleave-db-objects</module>
+        <module>../bigsword-eleave-db-spi</module>
+        <module>../bigsword-eleave-domain</module>
+        <module>../bigsword-eleave-web</module>
+        <module>../dummy-bigsword-eleave-bpm-aoc-impl</module>
+        <module>../dummy-bigsword-eleave-db-impl</module>
+
+    </modules>
+</project>
